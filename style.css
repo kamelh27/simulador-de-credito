@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+body{
+    background: rgba(32, 105, 134, 0.541);
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+}
+main{
+    margin: auto;
+    width: 100%;
+    
+}
+.simulador{
+    font-size: 3em;
+    margin: 30px 50px 40px 50px;
+    text-align: center;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.dinero, .cuotas, .interes{
+    width: 300px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+}
+.boton{
+    border-radius: 40px;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+.boton:hover{
+    cursor: pointer;
+    background-color: rgb(51, 255, 189);
+}
+footer{
+    text-align: center;
+    margin-top: 10px;
+    color:rgb(8, 8, 48)
+}
