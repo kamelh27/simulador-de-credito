@@ -4,25 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3c44aa10f3.js" crossorigin="anonymous"></script>
     <title>Simulador de prestamos</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
     <main class="container">
         <h1 class="simulador">Simulador de credito</h1>
-    <form action="" class="formulario">
-        <label for="dinero" class="titulo-dinero">¿Cuánto dinero necesitas?</label>
-        <input type="text" id="dinero" class="dinero" 
-        placeholder="0">
+        
+    <form action="#" >
 
-        <label for="cuotas">¿A cuántos meses?</label>
-        <input type="number" name="cuotas" id="cuotas" class="cuotas" placeholder="cuotas">
+        <div class="ingreso-dinero">
+            <label for="dinero" class="titulo-dinero"></label>
+            <input type="text" id="dinero" class="dinero" 
+            placeholder="¿Cuánto dinero necesitas?">
+            <p class="error">El campo no cumple con el valor minimo: $1.000.000</p>
+            
+        </div>
+        <div class="ingreso-cuota">
+            <label for="cuotas"></label>
+            <input type="number" name="cuotas" id="cuotas" class="cuotas" placeholder="¿A cuántos meses?">    
+        </div>
 
-        <label for="interes">Interes</label>
-        <input type="text" id="interes" placeholder="3" class="interes">
+        <div class="ingreso-interes">
+            <label for="interes"></label>
+            <input type="text" id="interes" placeholder="Interes" class="interes">
+        </div>
+
 
         <input type="submit" value="SIMULAR" class="boton">
     </form>
+    <table class="tabla-informativa">
+       <thead>
+               <tr>
+                   <td>NRO</td>
+                   <td>CAPITAL</td>
+                   <td>INTERES</td>
+                   <td>IMPORTE A PAGAR</td>
+               </tr>
+       </thead>
+        <tbody class="tabla">
+        </tbody>
+            <tfoot>
+                <tr>
+                    <td class="total">TOTAL</td>
+                    <td class="tabla1"></td>
+                    <td class="tabla2"></td>
+                    <td class="tabla3"></td>
+                </tr>
+            </tfoot>
+    </table>
     
     </main>
     <footer>Hecho por: Kamel lozano</footer>

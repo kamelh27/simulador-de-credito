@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
+
 body{
     background: rgba(32, 105, 134, 0.541);
     font-family: 'Kanit', sans-serif;
@@ -16,21 +17,43 @@ main{
     text-align: center;
 }
 
-.formulario{
+form{
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 100%;
+    width: 450px;
+    margin: 0 auto;
     align-items: center;
+    
+}
+
+.ingreso-dinero, .ingreso-cuota, .ingreso-interes{
+    width: 100%;   
+    height: 55px;
+    box-sizing: border-box;
 }
 
 .dinero, .cuotas, .interes{
+    display: block;
     width: 300px;
-    margin-bottom: 10px;
+    height: 20px;
+    margin: 8px auto  10px ;
     border: none;
     border-radius: 30px;
     text-align: center;
+    
 }
+
+.dinero, .cuotas, .interes:focus{
+    outline: none;
+}
+.error{
+    font-size: .6rem;
+    text-align: center;
+    color: red;
+    visibility: hidden;
+}
+
 .boton{
     border-radius: 40px;
     border: none;
@@ -40,6 +63,24 @@ main{
 .boton:hover{
     cursor: pointer;
     background-color: rgb(51, 255, 189);
+}
+.tabla-informativa{
+    border-collapse: collapse; 
+    text-align: center;
+    background-color: hsl(69, 55%, 51%);
+    border: 2px solid hsl(199, 53%, 26%);
+    margin: 20px auto;
+    width: 500px;
+}
+thead{
+    border :#173441 2px solid;
+    font-weight: bold;
+}
+tr{
+    border:  #173441 2px solid;
+}
+td{
+    border :#173441 2px solid;
 }
 footer{
     text-align: center;

@@ -1,57 +1,62 @@
+let botton = document.querySelector('.boton');
+let error = document.querySelector('.error');
+
 class Datos_usuario{
-    constructor(nombre,edad,cuotas,interes,producto){
-        this.nombre = nombre;
-        this.edad = edad;
+    constructor(cuotas,interes,dinero){
         this.cuotas = cuotas;
         this.interes = interes;
-        this.producto = producto;
-    }
-    get_datos(){
-        console.log('Nombre: ', this.nombre);
-        console.log('Edad: ', this.edad);
-        console.log('Cuotas: ', this.cuotas);
-        console.log('Interes: ', this.interes);
-        console.log('Producto: ', this.producto)
+        this.producto = dinero;
     }
 }
 
 let informacionDatos = []
 
+botton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    let ingresoDeCapital = Number(document.querySelector('.dinero').value);
+    let numeroDeCuotas = Number(document.querySelector('.cuotas').value);
+    let interes = Number(document.querySelector('.interes').value);
+    document.querySelector('.tabla').innerHTML=''
+     if(ingresoDeCapital > 1000000){
+        for(let i = 1; i<=numeroDeCuotas;i++){
+            let cuontasPagar = ingresoDeCapital/numeroDeCuotas;
+            let puntoDecimalesCuotas = cuontasPagar.toFixed(2)
+            let interesPagar = ((ingresoDeCapital*interes)/100)/numeroDeCuotas;
+            let puntoDecimalesInteres = interesPagar.toFixed(2)
+            let totalCuota = Math.floor(cuontasPagar + interesPagar);
+            document.querySelector('.tabla').innerHTML = document.querySelector('.tabla').innerHTML + 
+            `<tr>
+                <td>${i}</td>
+                <td>${puntoDecimalesCuotas}</td>
+                <td>${puntoDecimalesInteres}</td>
+                <td>${totalCuota}</td>
+            </tr>`;
+            let dineroCapital = ingresoDeCapital.toFixed(2);
+            let datosInteresCuotas = interesPagar * numeroDeCuotas;
+            let numeroDatosInteres = datosInteresCuotas.toFixed(2)
+            let datosCuotas = totalCuota * numeroDeCuotas;
+            let numeroDatosCuotas = datosCuotas.toFixed(2)
+            document.querySelector('.tabla1').innerHTML = dineroCapital;
+            document.querySelector('.tabla2').innerHTML = numeroDatosInteres;
+            document.querySelector('.tabla3').innerHTML = numeroDatosCuotas;
+            error.style.visibility = 'hidden';
 
-function simuladorGredito(){
-    //Pedir informacion al cliente
-    let nombre = prompt('¿Cual es tu nombre?');
-    let edad = prompt('Que edad tienes')
-    let producto = prompt('Que producto te interesa')
-    let capital = parseInt(prompt('¿Valor del producto que necesitas?'));
-    let cuotas = prompt('¿A cuántos cuotas?'); 
-    let interes = 3;
-
-
-    if(edad >= 18){
-        if(capital >0){
-            for(let i = 1; i<=1;i++){
-                let cuontasPagar = capital/cuotas;
-                let interesPagar = ((capital*interes)/100)/cuotas;
-                let totalCuota = Math.floor(cuontasPagar + interesPagar);
-                let datosUsuario = new Datos_usuario(nombre, edad, cuotas, interes,producto);
-                informacionDatos.push(datosUsuario)
-                console.log(informacionDatos)
-                console.log(`Pagarías ${cuotas} cuotas mensuales con un interes mensual de: $${interesPagar}, con un valor de cuota mensual de: $${totalCuota} mil`)
-            }
+            datosUsuario(puntoDecimalesCuotas, puntoDecimalesInteres, totalCuota)
         }
-else {
-    alert("Falta un numero")
+        
+    }else{
+    error.style.visibility = 'visible';
 }
-    }
-    else{
-        console.log('No eres mayor de edad no puedes hacer el Credito')
-    }
-}
-simuladorGredito()
+})
+   
 
-for(let datosUsuario of informacionDatos){
-    datosUsuario.get_datos()
+function datosUsuario(dinero, interes, cuotas){
+    let datos = {dinero:dinero,interes:interes,cuotas:cuotas};
+    informacionDatos.push(datos)
+
+    
+    let arregloDeDatos = JSON.stringify(informacionDatos);
+    localStorage.setItem('arregloDatos', arregloDeDatos)   
 }
 
 
